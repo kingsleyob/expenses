@@ -1,6 +1,8 @@
 import { ReportHandler, getCLS, getFID, getFCP, getLCP, getTTFB } from 'web-vitals';
+import reportWebVitals from './reportWebVitals';  // Ensure the path is correct
 
-const reportWebVitals = (onPerfEntry?: ReportHandler) => {
+// Renamed local function to avoid conflict
+const handleWebVitals = (onPerfEntry?: ReportHandler) => {
   if (onPerfEntry && onPerfEntry instanceof Function) {
     import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
       getCLS(onPerfEntry);
@@ -12,4 +14,4 @@ const reportWebVitals = (onPerfEntry?: ReportHandler) => {
   }
 };
 
-export default reportWebVitals;
+export default handleWebVitals;  // Export the renamed function

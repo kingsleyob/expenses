@@ -1,8 +1,9 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import App from './App';  // Importing the App component
 
-function App() {
+function AppComponent() {  // Renamed local function to AppComponent
   return (
     <div className="App">
       <header className="App-header">
@@ -23,4 +24,4 @@ function App() {
   );
 }
 
-export default App;
+export default AppComponent;  // Export the renamed component
