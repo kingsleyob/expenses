@@ -22,9 +22,10 @@
     ]
   },
   "jest": {
-  "setupFilesAfterEnv": ["<rootDir>/src/setupTests.ts"]
-}
-,
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/setupTests.ts"
+    ]
+  },
   "browserslist": {
     "production": [
       ">0.2%",
