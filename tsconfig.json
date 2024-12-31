@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+      "target": "es5",                         // Target ECMAScript version (ES5 for compatibility)
+      "lib": ["dom", "dom.iterable", "esnext"], // Specify the libraries to be included
+      "allowJs": true,                         // Allow JavaScript files to be part of the program
+      "skipLibCheck": true,                    // Skip type checking of declaration files
+      "esModuleInterop": true,                 // Enable compatibility with CommonJS modules
+      "allowSyntheticDefaultImports": true,    // Allow default imports from modules with no default export
+      "strict": true,                          // Enable all strict type-checking options
+      "forceConsistentCasingInFileNames": true, // Enforce consistent casing for imports
+      "module": "esnext",                      // Module system (use ESNext for modern JavaScript features)
+      "moduleResolution": "node",              // How TypeScript resolves modules (node is the most common)
+      "resolveJsonModule": true,               // Allow importing JSON files as modules
+      "jsx": "react-jsx",                      // Use JSX transform compatible with React 17 and later
+      "types": ["react", "react-dom"],         // Include type definitions for React and React DOM
+      "noEmit": true                           // Prevent generating output files (only type checking)
+    },
+    "include": [
+      "src"  // Include files from the 'src' folder
+    ],
+    "exclude": [
+      "node_modules"  // Exclude 'node_modules' directory from compilation
+    ]
+  }
+  

@@ -29,6 +29,6 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <App />  // Make sure App is used here
+    <App />  
   </React.StrictMode>
 );
