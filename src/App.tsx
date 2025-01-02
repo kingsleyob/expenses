@@ -1,83 +1,3 @@
-
-// import React, { useState } from 'react';
-// import './App.css';
-// import ExpenseForm from './ExpenseForm';
-// import ExpenseList from './ExpenseList';
-// import ExpenseSummary from './ExpenseSummary';
-
-// const App: React.FC = () => {
-//   const [expenses, setExpenses] = useState<{ description: string; amount: string }[]>([]);
-
-//   const addExpense = (expense: { description: string, amount: string }) => {
-//     setExpenses([...expenses, expense]);
-//   };
-
-//   const removeExpense = (index: number) => {
-//     const updatedExpenses = expenses.filter((_, i) => i !== index);
-//     setExpenses(updatedExpenses);
-//   };
-
-//   const total = expenses.length
-//     ? expenses.reduce((acc, exp) => acc + parseFloat(exp.amount), 0)
-//     : 0;
-
-//   return (
-//     <div className="App">
-//       <h1>Expense Tracker</h1>
-//       <ExpenseForm addExpense={addExpense} />
-//       <ExpenseList expenses={expenses} removeExpense={removeExpense} />
-//       <ExpenseSummary total={total} />
-//     </div>
-//   );
-// };
-
-// export default App;
-
-// import React, { useState } from 'react';
-// import './App.css';
-// import ExpenseForm from './ExpenseForm';
-// import ExpenseList from './ExpenseList';
-// import ExpenseSummary from './ExpenseSummary';
-
-// const App: React.FC = () => {
-//   const [expenses, setExpenses] = useState<{ description: string; amount: string }[]>([]);
-
-//   const addExpense = (expense: { description: string; amount: string }) => {
-//     setExpenses([...expenses, expense]);
-//   };
-
-//   const removeExpense = (index: number) => {
-//     const updatedExpenses = expenses.filter((_, i) => i !== index);
-//     setExpenses(updatedExpenses);
-//   };
-
-//   const total = expenses.length
-//     ? expenses.reduce((acc, exp) => acc + parseFloat(exp.amount), 0)
-//     : 0;
-
-//   return (
-//     <div className="App">
-//       {/* Main container */}
-//       <div className="container mt-5">
-//         {/* Header */}
-//         <h1 className="text-center mb-4">Expense Tracker</h1>
-        
-//         {/* Expense Form */}
-//         <ExpenseForm addExpense={addExpense} />
-
-//         {/* Expense List */}
-//         <ExpenseList expenses={expenses} removeExpense={removeExpense} />
-
-//         {/* Expense Summary */}
-//         <ExpenseSummary total={total} />
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default App;
-
-
 import React, { useState } from 'react';
 import './App.css';
 import ExpenseForm from './ExpenseForm';
@@ -88,12 +8,10 @@ import CurrencyConversion from './CurrencyConversion';
 const App: React.FC = () => {
   const [expenses, setExpenses] = useState<{ description: string; amount: number; currency: string }[]>([]);
   const [convertedAmount, setConvertedAmount] = useState<number>(0);
-  const [fromCurrency, setFromCurrency] = useState('USD');
-  const [toCurrency, setToCurrency] = useState('EUR');
+  const [toCurrency, setToCurrency] = useState('EUR'); // User can change the target currency, but fromCurrency is always USD
 
   const addExpense = (expense: { description: string; amount: string; currency: string }) => {
-    // Convert amount to a number before adding to expenses state
-    setExpenses([...expenses, { ...expense, amount: parseFloat(expense.amount) }]); 
+    setExpenses([...expenses, { ...expense, amount: parseFloat(expense.amount) }]);
   };
 
   const removeExpense = (index: number) => {
@@ -116,12 +34,36 @@ const App: React.FC = () => {
 
         <ExpenseForm addExpense={addExpense} />
         <ExpenseList expenses={expenses} removeExpense={removeExpense} />
+
+        {/* Display "USD" statically without the dropdown */}
+        <div className="mb-4">
+          <label>From Currency: </label>
+          <div className="currency-tab">USD</div> {/* USD displayed as static text */}
+        </div>
+
+        {/* Allow users to change the 'To Currency' */}
+        <div className="mb-4">
+          <label htmlFor="toCurrency">To Currency</label>
+          <select
+            id="toCurrency"
+            className="form-control"
+            value={toCurrency}
+            onChange={(e) => setToCurrency(e.target.value)}  // Only allow users to change the target currency
+          >
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="GBP">GBP</option>
+            {/* Add more currencies as needed */}
+          </select>
+        </div>
+
         <CurrencyConversion
           amount={total}
-          fromCurrency={fromCurrency}
+          fromCurrency="USD"  // From currency is always USD
           toCurrency={toCurrency}
           onConversionComplete={handleConversion}
         />
+
         <ExpenseSummary total={total} />
         {convertedAmount > 0 && (
           <div>

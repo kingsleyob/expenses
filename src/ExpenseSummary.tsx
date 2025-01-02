@@ -1,14 +1,4 @@
-// import React from 'react';
 
-// interface ExpenseSummaryProps {
-//   total: number;
-// }
-
-// const ExpenseSummary: React.FC<ExpenseSummaryProps> = ({ total }) => {
-//   return <h2>Total Expenses: ${total}</h2>;
-// };
-
-// export default ExpenseSummary;
 
 import React from 'react';
 

@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -17,8 +18,9 @@ const CurrencyConversion: React.FC<CurrencyConversionProps> = ({
   const [rates, setRates] = useState<any>({});
   const [error, setError] = useState<string>('');
 
-  const apiKey = '1b84d4dee46440448e115439ccca66ee'; // Replace with your Open Exchange Rates API key
+  const apiKey = '1b84d4dee46440448e115439ccca66ee'; 
 
+  // Fetch exchange rates when the component mounts or when the base currency changes
   useEffect(() => {
     axios
       .get(`https://openexchangerates.org/api/latest.json?app_id=${apiKey}&base=${fromCurrency}`)
@@ -31,6 +33,7 @@ const CurrencyConversion: React.FC<CurrencyConversionProps> = ({
       });
   }, [fromCurrency]);
 
+  // Convert the amount based on the current rates
   useEffect(() => {
     if (rates[toCurrency] && amount > 0) {
       const convertedAmount = amount * rates[toCurrency];

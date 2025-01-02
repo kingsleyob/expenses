@@ -46,6 +46,19 @@ ul {
   text-align: center;
 }
 
+.currency-tab {
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: #ffffff; /* Set the background to white */
+  border-radius: 5px;
+  font-weight: bold;
+  border: 1px solid #ccc; /* Add border to match other fields */
+  margin-top: 5px;
+  width: 100%; 
+}
+
+
+
 /* Responsive Design */
 @media (max-width: 768px) {
   h1 {

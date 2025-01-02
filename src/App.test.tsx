@@ -1,84 +1,15 @@
-// // src/App.test.tsx
-// import React from 'react';
-// import { render, screen } from '@testing-library/react';
-// import App from './App';
-
-// // test('renders learn react link', () => {
-// //   render(<App />);
-// //   const linkElement = screen.getByText(/learn react/i);
-// //   expect(linkElement).toBeInTheDocument();  // Should work now with jest-dom
-// // });
-
-// test('renders Expense Tracker header', () => {
-//   render(<App />);
-//   const headerElement = screen.getByText(/Expense Tracker/i);
-//   expect(headerElement).toBeInTheDocument();
-// });
-
-// import React from 'react';
-// import { render, screen, fireEvent } from '@testing-library/react';
-// import App from './App';
-// import ExpenseForm from './ExpenseForm';
-// import ExpenseList from './ExpenseList';
-// import ExpenseSummary from './ExpenseSummary';
-
-// // Test for rendering the Expense Tracker header
-// test('renders Expense Tracker header', () => {
-//   render(<App />);
-//   const headerElement = screen.getByText(/Expense Tracker/i);
-//   expect(headerElement).toBeInTheDocument();
-// });
-
-// // Test for adding an expense
-// test('adds an expense when the form is submitted', () => {
-//   const addExpenseMock = jest.fn();
-
-//   render(<ExpenseForm addExpense={addExpenseMock} />);
-
-//   // Simulate user typing in the expense description
-//   const descriptionInput = screen.getByPlaceholderText('Expense Description');
-//   fireEvent.change(descriptionInput, { target: { value: 'Groceries' } });
-
-//   // Simulate user typing in the expense amount
-//   const amountInput = screen.getByPlaceholderText('Amount');
-//   fireEvent.change(amountInput, { target: { value: '50' } });
-
-//   // Submit the form
-//   fireEvent.click(screen.getByText('Add Expense'));
-
-//   // Check if the mock function was called with the correct arguments
-//   expect(addExpenseMock).toHaveBeenCalledWith({ description: 'Groceries', amount: '50' });
-// });
-
-// // Test for removing an expense
-// test('removes an expense when delete button is clicked', () => {
-//   const expenses = [{ description: 'Groceries', amount: '50' }];
-//   const removeExpenseMock = jest.fn();
-
-//   render(<ExpenseList expenses={expenses} removeExpense={removeExpenseMock} />);
-
-//   // Click the delete button
-//   fireEvent.click(screen.getByText('Delete'));
-
-//   // Check if removeExpenseMock was called
-//   expect(removeExpenseMock).toHaveBeenCalled();
-// });
-
-// // Test for total expenses calculation
-// test('calculates and displays the total expenses correctly', () => {
-//   const total = 150; // Example total
-//   render(<ExpenseSummary total={total} />);
-
-//   // Check if the total is displayed correctly
-//   expect(screen.getByText('Total Expenses: $150')).toBeInTheDocument();
-// });
 
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import App from './App';
-import ExpenseForm from './ExpenseForm';
+import App from './App';import ExpenseForm from './ExpenseForm';
 import ExpenseList from './ExpenseList';
 import ExpenseSummary from './ExpenseSummary';
+
+// Mocking axios for the currency conversion test only
+jest.mock('axios', () => ({
+  get: jest.fn(() => Promise.resolve({ data: { rates: { EUR: 0.85 } } }))  // Mocked response
+}));
+
 
 // Test for rendering the Expense Tracker header
 test('renders Expense Tracker header', () => {
