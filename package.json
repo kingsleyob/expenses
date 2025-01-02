@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^1.7.9",
+    "bootstrap": "^5.3.3",
     "cra-template-typescript": "1.2.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -21,11 +23,7 @@
       "react-app/jest"
     ]
   },
-  "jest": {
-    "setupFilesAfterEnv": [
-      "<rootDir>/src/setupTests.ts"
-    ]
-  },
+  "jest": {},
   "browserslist": {
     "production": [
       ">0.2%",
